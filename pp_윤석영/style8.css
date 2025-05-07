@@ -1,0 +1,123 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,900);
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  padding-top: 20px;
+  padding-bottom: 200px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffe;
+  background-size: cover;
+}
+.wrapper .title h1 {
+  font-weight: 900;
+  padding-bottom: 5px;
+  border-bottom: solid 2px #ddd;
+  display: inline-block;
+}
+.wrapper .title p {
+  margin-top: 30px;
+}
+.wrapper .buttons {
+  margin-top: 30px;
+}
+.wrapper .buttons .button {
+  margin: 25px auto;
+  transition: all 0.3s;
+  overflow: hidden;
+  cursor: pointer;
+}
+.wrapper .buttons .button-fb {
+  background-color: #305097;
+  color: #ffe;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 130%;
+  line-height: 50px;
+  box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+  -webkit-box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+  -moz-box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+}
+.wrapper .buttons .button-fb:hover {
+  width: 150px;
+}
+.wrapper .buttons .button-fb:hover i:after {
+  margin-left: 10px;
+  content: "share";
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 1px;
+}
+.wrapper .buttons .button-tw {
+  background-color: #00aced;
+  color: #ffe;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 130%;
+  line-height: 50px;
+  box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+  -webkit-box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+  -moz-box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+}
+.wrapper .buttons .button-tw:hover {
+  width: 150px;
+}
+.wrapper .buttons .button-tw:hover i:after {
+  margin-left: 10px;
+  content: "tweet";
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 1px;
+}
+.wrapper .buttons .button-go {
+  background-color: #db4a39;
+  color: #ffe;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 130%;
+  line-height: 50px;
+  box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+  -webkit-box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+  -moz-box-shadow: rgba(16, 25, 36, 0.65098) 3px 3px 8px 0px;
+}
+.wrapper .buttons .button-go:hover {
+  width: 150px;
+}
+.wrapper .buttons .button-go:hover i:after {
+  margin-left: 10px;
+  content: "+1";
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 1px;
+}
+.wrapper .copyright {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: solid 2px #ddd;
+  display: inline-block;
+}
+.wrapper .copyright span {
+  background-color: #ffe;
+  color: #333;
+  transition: all 0.3s;
+}
+.wrapper .copyright span a:link {
+  color: #333;
+  text-decoration: none;
+}
+.wrapper .copyright span a:visited {
+  color: #333;
+  text-decoration: none;
+}
+.wrapper .copyright span:hover {
+  background-color: #999;
+}

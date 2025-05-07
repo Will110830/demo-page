@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Building a Vertical Timeline With CSS and a Touch of JavaScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.14/d3.js"></script>
+  <link rel="stylesheet" href="./style2.css">
+  <link rel="stylesheet" href="./style1.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style3.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./style4.css">
+  <script src="https://public.codepenassets.com/js/prefixfree-1.0.7.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./style7.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" href="style8.css">
+
+  <style>
+    .fade-in-text {
+      opacity: 0;
+      transform: translateY(20px);
+      font-size: 150px;
+      transition: all 1s ease-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .h3txt {
+      color: black;
+    }
+
+
+
+    /* CABEÇALHO */
+    header {
+      background-color: #2D9CDB;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: white;
+      font-size: 24px;
+    }
+
+    header nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* SEÇÃO PRINCIPAL (HERO) */
+    .hero {
+      background-color: #74cff0;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .hero input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .hero button {
+      padding: 12px 25px;
+      background-color: #F2C94C;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background-color: #e0b13b;
+    }
+
+    /* CATEGORIAS */
+    .categories {
+      display: flex;
+      justify-content: space-around;
+      margin: 40px 0;
+    }
+
+    .category {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 30%;
+    }
+
+    .category h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .category p {
+      color: #888;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <section class="intro">
+    <p>공공 데이터를 활용한</p><br><br>
+    <div class="container">
+      <div class="svg-wrapper">
+        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+          <rect class="shape" height="60" width="320" />
+        </svg>
+        <div class="text">도서 추천 서비스</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <ul>
+      <li>
+        <div>
+          <time>추진 배경</time> 현대인은 수많은 정보 속에서 자신에게 맞는 책을 찾는 데 어려움을 겪고 있습니다. 특히 연령, 성별, 관심사에 따라 적합한 도서를 추천해주는 서비스는 부족합니다.
+          공공데이터와 SNS 데이터를 분석하고, AI 기술을 활용해 맞춤형 도서 추천 서비스를 제공함으로써 이러한 문제를 해결하고자 합니다.
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>대상 고객</time> • 10-40대 중심의 모바일 친화적 독자<br>• 책을 잘 고르지 못하거나, 관심사에 맞는 책을 찾고 싶은 이용자<br>• 성별, 나이, 키워드 등을 바탕으로
+          맞춤형 추천을 받고 싶은 사용자
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>서비스 분야</time> 커뮤니티 및 도서 큐레이션 서비스
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>벤치마킹 대상</time> 밀리의 서재: 밀리 에디터 클럽 밀리로드 큐레이션 미션
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>목적</time> 내가 누구인지(성별, 나이, 관심사)에 따라 딱 맞는 책을 빠르게 찾을 수 있는 경험 제공
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>목표</time> 1. 개인 맞춤형 도서 추천<br>2. 그래프로 현재 트랜드를 이해하기 쉬운 시각화 제공<br>3. SNS 공유 기능을 통해 사용자 참여 유도 및 추천 도서의 확산 효과
+          달성
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>사용할 데이터</time> 국립중앙도서관 Open API<br>OpenAI GPT API<br>트위터 API 및 네이버 검색 Open API
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <br><br><br><br>
+  <p id="scrollText" class="fade-in-text">구현 예상도</p><br><br><br><br>
+  <br><br><br><br>
+  <section class="hero">
+    <h2>줄거리나 키워드를 입력해 보세요!</h2>
+    <input type="text" id="search-input" placeholder="예) 점을 찍고 다시 나타나는 여자의 복수극">
+    <button onclick="searchProduct()">추천받기</button>
+  </section>
+  <section class="categories">
+    <div class="category">
+      <h3 class="h3txt">성별에 따른 추천 받기</h3>
+      <p>남,녀별 인기있는 도서를 추천해 드립니다</p>
+    </div>
+    <div class="category">
+      <h3 class="h3txt">연령대에 따른 추천 받기</h3>
+      <p>연령대별 인기있는 도서를 추천해 드립니다</p>
+    </div>
+    <div class="category">
+      <h3 class="h3txt">맞춤형 서비스</h3>
+      <p>나이, 성별, 좋아하는 키워드를 입력 하시면 맞춤형 도서를 추천해 드립니다</p>
+    </div>
+  </section>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- partial:index.partial.html -->
+  <br><br><br>
+  <a class="btn btn-2">20대 여성이 가장 많이 찾은 키워드예요!</a>
+  <script src="./script2.js"></script>
+  <script src="./script1.js"></script>
+  <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js'></script>
+  <script src="./script5.js"></script>
+  <br><br><br><br><br><br><br><br><br><br><br>
+  <div class="wrapper">
+    <img src="https://image.yes24.com/goods/99308021/" width="500px">
+    <div class="title">
+      <h1 class="titletxt">추천받은 책 SNS로 공유하기</h1>
+    </div>
+    <div class="buttons">
+      <div class="button button-fb">
+        <i class="fa fa-facebook"></i>
+      </div>
+      <div class="button button-tw">
+        <i class="fa fa-twitter"></i>
+      </div>
+      <div class="button button-go">
+        <i class="fa fa-google-plus"></i>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to("#scrollText", {
+      scrollTrigger: {
+        trigger: "#scrollText",
+        start: "top 90%", // 텍스트가 뷰포트 아래쪽 90% 지점에 올 때
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+  </script>
+</body>
+
+</html>
